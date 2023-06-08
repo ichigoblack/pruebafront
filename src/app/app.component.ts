@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'prueba_angular';
-  username:string = "";
-  password:string = "";
 
-  onSubmit() {
-    if (this.username === 'admin' && this.password === 'admin') {
-      // Aquí puedes realizar acciones adicionales después de iniciar sesión exitosamente
-      console.log('Inicio de sesión exitoso');
-    } else {
-      console.log('Inicio de sesión fallido');
+  login:boolean = false;
+
+  constructor(
+    private loginService:LoginService
+  ){
+  }
+
+  ngOnInit(): void {
+    if(this.loginService.isAutenticated()){
+      this.login = true;
     }
   }
+  
 }
