@@ -1,17 +1,21 @@
 <div>
 	<div *ngIf="cargando == true" spinner-grow role="status">
 		<span class="sr-only"></span>
-	</div>
+	</div>	
 	<ng-template #content let-modal>
 		<div class="modal-header">
 			<h4 class="modal-title" id="modal-basic-title">{{title}}</h4>
 			<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('close')"></button>
 		</div>
 		<div class="modal-body">
-			<textarea class="form-control" id="exampleTextarea" [rows]="rows">
-				{{fragmento}}
-			</textarea>
+			
+			<div class="tabla-container" style="display: flex;justify-content: center;">
+				<textarea class="form-control" id="exampleTextarea" [rows]="rows">
+					{{fragmento}}
+				</textarea>
+			</div>
 		</div>
+		
 		<div class="modal-footer">
 			<button type="button" class="btn btn-outline-dark" (click)="modal.close('ok')">Ok</button>
 		</div>

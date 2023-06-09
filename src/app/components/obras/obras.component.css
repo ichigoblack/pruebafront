@@ -1,1 +1,26 @@
 @import "~@fortawesome/fontawesome-free/css/all.css";
+h3{
+    margin-left: 5%;
+    margin-top: 1%;
+}
+
+.tabla-container {
+    border-collapse: collapse;
+    margin-left: 400px;
+    max-height: 100px;
+    overflow-y: auto;
+    border: 1px solid rgb(212, 69, 69); 
+}
+
+.tabla-container-modal {
+    border-collapse: collapse;
+    margin-left: 400px;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid rgb(212, 69, 69); 
+}
+
+.tabla-container td, .tabla-container th {
+    border: 1px solid black;
+    padding: 8px; 
+}

@@ -13,52 +13,51 @@ import Swall from 'sweetalert2'
 })
 export class ObrasComponent implements OnInit {
 
-  public obras:Obra[] = [];
-  public rows!:number;
-  public title!:string;
-  fragmento:string[] = [];
+  public obras: Obra[] = [];
+  public rows!: number;
+  public title!: string;
+  fragmento: string[] = [];
 
   cargando = true;
 
   @Input("autor")
-  public autor!:string;
+  public autor!: string;
 
   constructor(
-    private obrasService:ObrasService,
+    private obrasService: ObrasService,
     private modalService: NgbModal
-  ){
-    
+  ) {
+
   }
 
   ngOnInit(): void {
     this.obrasService.getObrasPorAutor(this.autor)
-            .subscribe((data:any)=>{
-              this.obras = data;
-            })
+      .subscribe((data: any) => {
+        this.obras = data;
+      })
   }
 
-  verFragmento(obra:Obra,content:any){
-    
-    this.modalService.open( content, { ariaLabelledBy: 'modal-basic-title' } );
-
+  verFragmento(obra: Obra, content: any) {
+    this.modalService.dismissAll("ok")
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
 
     this.obrasService.getFragmento(obra.title)
-            .subscribe((data:any)=>{
-                this.rows = data[0].linecount;
-                this.fragmento = data[0].lines;
-                this.title = data[0].title;
-                console.log(data);
+      .subscribe((data: any) => {
+        this.rows = data[0].linecount;
+        this.fragmento = data[0].lines;
+        this.title = data[0].title;
+        console.log(data);
 
-    });
+      });
 
   }
 
-  marcarFavorita(obra:Obra){
+  marcarFavorita(obra: Obra) {
     this.obrasService.agregarObraFavorita(obra);
     Swall.fire({
-      title:'Exito',
-      icon:'success',
-      text:'Se agrego a favoritos'
+      title: 'Exito',
+      icon: 'success',
+      text: 'Se agrego a favoritos'
     })
   }
 
