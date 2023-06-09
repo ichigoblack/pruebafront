@@ -34,7 +34,7 @@ export class ObrasService {
   }
 
   getObrasPorAutor(autor:string){
-    return this.http.get(`${this.base}/author/${autor}/title`)
+    return this.http.get(`${this.base}/author/${autor}`)
   }
 
   getFragmento(obra:string){

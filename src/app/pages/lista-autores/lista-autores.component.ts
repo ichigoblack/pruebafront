@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { auto } from '@popperjs/core';
@@ -6,6 +6,7 @@ import { ObrasComponent } from 'src/app/components/obras/obras.component';
 import { Autor } from 'src/app/models/Autor';
 import { AuthorService } from 'src/app/services/author.service';
 import { LoginService } from 'src/app/services/login.service';
+import { ObrasService } from 'src/app/services/obras.service';
 
 @Component({
   selector: 'app-lista-autores',
@@ -21,9 +22,10 @@ export class ListaAutoresComponent implements OnInit{
 
   constructor(
     private loginService:LoginService,
-    private modalService: NgbModal,
     private authorService:AuthorService,
-    private router:Router
+    private obrasService:ObrasService,
+    private router:Router,
+    private modalService:NgbModal 
   ){
 
   }
@@ -41,13 +43,16 @@ export class ListaAutoresComponent implements OnInit{
     this.cargando = false;
   }
 
-  verObras(autor:string , content:any){
+  verObras(autor:any , content:any){
+    this.modalService.dismissAll("ok")
+    /*this.obrasService.getObrasPorAutor(autor)
+    .subscribe((data:any)=>{
+      this.autores = data.authors;
+      console.log("content ",data)
+    });*/
     this.autorInput  = autor;
-
-    this.modalService.open( content, { ariaLabelledBy: 'modal-basic-title' } )
-      .result.then((result=>{
-    }));
-    
+    this.modalService.open(content, { centered: true, size: 'xs' });
   }
+
 
 }

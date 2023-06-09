@@ -5,8 +5,10 @@
 			<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('close')"></button>
 		</div>
 		<div class="modal-body">
-			<app-obras [autor]="autorInput">
-			</app-obras>
+			<div class="tabla-container-modal" style="display: flex;justify-content: center;">
+				<app-obras [autor]="autorInput">
+				</app-obras>
+			</div>
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-outline-dark" (click)="modal.close('ok')">Ok</button>
@@ -36,7 +38,6 @@
 					<td>
 						<button class="btn btn-info" (click)="verObras(autor,content)">Ver Obras</button>
 					</td>
-	
 				</tr>
 			</tbody>
 		</table>

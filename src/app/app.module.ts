@@ -5,6 +5,7 @@ import { PagesModule } from './pages/pages.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { LoginModule } from './login/login.module'
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
@@ -21,7 +22,9 @@ import { SharedModule } from './shared/shared.module';
     LoginModule,
     NgbModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+   // ModalModule
+    ModalModule.forRoot()
 
   ],
   providers: [],
